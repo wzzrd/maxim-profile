@@ -50,4 +50,11 @@ class profile::wordpress {
   include mysql::server
   include wordpress
 
+  firewalld_port { 'Open port 80':
+    ensure   => present,
+    zone     => 'public',
+    port     => 80,
+    protocol => 'tcp',
+  }
+
 }
